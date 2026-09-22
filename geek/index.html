@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Geek卸载工具下载 - 专业级程序卸载与文件清理工具，支持强制删除残留注册表、清理系统垃圾、管理开机启动项，彻底解决软件卸载不干净的问题。">
+    <meta name="keywords" content="geek卸载工具下载,geek卸载,卸载软件,强制卸载,系统清理,注册表清理">
+    <title>geek卸载工具下载 - 专业级顽固软件彻底卸载与系统清理工具</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --code-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-download:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #eff6ff 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .download-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .file-item strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .file-item span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .main-download-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-download-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .main-download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: #eff6ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* How it works */
+        .steps {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--text-main);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-item h4 {
+            margin-bottom: 10px;
+        }
+
+        .step-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            padding: 60px 0;
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .cross-icon {
+            color: var(--danger-color);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 60px 0;
+            background-color: #f8fafc;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            padding-top: 15px;
+            border-top-color: var(--border-color);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: #94a3b8;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .file-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7V4h16v3"></path>
+                    <path d="M9 20h6"></path>
+                    <path d="M12 4v16"></path>
+                    <path d="M20 20H4"></path>
+                    <path d="M4 10h16"></path>
+                </svg>
+                Geek<span>Uninstaller</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features" class="active">功能特点</a>
+                <a href="#how-to">使用指南</a>
+                <a href="#comparison">对比优势</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#download" class="btn-download">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                立即下载
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>geek卸载工具下载</h1>
+                <p>专业级顽固软件卸载方案。不仅卸载程序，更深度清理注册表残留、启动项和临时文件，让系统恢复如初。</p>
+                
+                <div class="download-box" id="download">
+                    <div class="file-info">
+                        <div class="file-item">
+                            <strong>软件名称</strong>
+                            <span>Geek Uninstaller</span>
+                        </div>
+                        <div class="file-item">
+                            <strong>文件大小</strong>
+                            <span>1.2 MB (免安装版)</span>
+                        </div>
+                        <div class="file-item">
+                            <strong>更新时间</strong>
+                            <span>2023-10</span>
+                        </div>
+                    </div>
+                    <button class="main-download-btn" onclick="simulateDownload()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        下载 Geek 卸载工具
+                    </button>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: #94a3b8;">
+                        免费开源 · 绿色安全 · 无需安装 · 支持多语言
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择 Geek 卸载工具？</h2>
+                    <p>告别卸载残留，彻底清理系统垃圾</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                            </svg>
+                        </div>
+                        <h3>强制卸载顽固软件</h3>
+                        <p>针对无法通过常规程序卸载的软件提供强力清理方案，彻底移除安装目录及注册表中的残留文件。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
+                        <h3>注册表清理</h3>
+                        <p>自动扫描并清理软件卸载后遗留在系统注册表中的冗余键值，防止系统运行缓慢或报错。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>启动项管理</h3>
+                        <p>查看并禁用开机自启动程序，优化系统启动速度，提升电脑运行效率。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3>多语言支持</h3>
+                        <p>支持包括简体中文在内的多种语言界面，操作简单直观，适合所有用户群体。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps" id="how-to">
+            <div class="container">
+                <div class="section-title">
+                    <h2>如何使用 Geek 卸载工具</h2>
+                    <p>简单三步，彻底清理软件</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>选择程序</h4>
+                        <p>在列表中找到需要卸载的软件，双击选中。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>执行卸载</h4>
+                        <p>点击右侧的“卸载”按钮，等待工具处理完成。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>清理残留</h4>
+                        <p>卸载完成后，点击“扫描”按钮，清理注册表垃圾。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison" id="comparison">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Geek vs 系统自带卸载</h2>
+                    <p>对比传统卸载方式，Geek 更彻底</p>
+                </div>
+                <div class="comparison-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>功能对比</th>
+                                <th>系统自带卸载</th>
+                                <th>Geek 卸载工具</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>基本卸载</td>
+                                <td><span class="check-icon">✔</span> 支持</td>
+                                <td><span class="check-icon">✔</span> 支持</td>
+                            </tr>
+                            <tr>
+                                <td>深度清理残留</td>
+                                <td><span class="cross-icon">✘</span> 较弱</td>
+                                <td><span class="check-icon">✔</span> 强力扫描</td>
+                            </tr>
+                            <tr>
+                                <td>注册表清理</td>
+                                <td><span class="cross-icon">✘</span> 无</td>
+                                <td><span class="check-icon">✔</span> 自动清理</td>
+                            </tr>
+                            <tr>
+                                <td>启动项管理</td>
+                                <td><span class="cross-icon">✘</span> 无</td>
+                                <td><span class="check-icon">✔</span> 内置管理</td>
+                            </tr>
+                            <tr>
+                                <td>文件粉碎</td>
+                                <td><span class="cross-icon">✘</span> 无</td>
+                                <td><span class="check-icon">✔</span> 支持</td>
+                            </tr>
+                            <tr>
+                                <td>便携免安装</td>
+                                <td><span class="cross-icon">✘</span> 需安装</td>
+                                <td><span class="check-icon">✔</span> 绿色便携</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题 (FAQ)</h2>
+                    <p>关于 Geek 卸载工具的解答</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">Geek 卸载工具安全吗？</div>
+                        <div class="faq-answer">
+                            Geek Uninstaller 是一款完全免费且开源的绿色软件，无需安装，所有文件都在本地运行，不会上传用户数据，因此非常安全。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">卸载后需要重启电脑吗？</div>
+                        <div class="faq-answer">
+                            一般情况下，Geek 卸载工具卸载完成后会提示是否重启。对于大多数软件，重启不是必须的，但如果系统提示，建议重启以确保所有进程被终止。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">可以卸载杀毒软件吗？</div>
+                        <div class="faq-answer">
+                            虽然理论上可以卸载，但卸载系统自带或关键的安全软件可能会导致系统暴露在风险中。建议在卸载前了解相关风险，并确保已安装其他安全软件进行保护。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于 Geek</h4>
+                    <ul>
+                        <li><a href="#">软件介绍</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">帮助文档</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">版本下载</a></li>
+                        <li><a href="#">绿色版下载</a></li>
+                        <li><a href="#">多语言包</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">反馈建议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Geek Uninstaller Resource. All rights reserved. 本站仅提供工具介绍与下载指引。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Simulate Download Action
+        function simulateDownload() {
+            const btn = document.querySelector('.main-download-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '正在准备下载...';
+            btn.style.backgroundColor = '#10b981';
+            
+            setTimeout(() => {
+                // In a real scenario, this would trigger the download link
+                // Here we simulate the visual feedback
+                alert('下载开始：请前往安全软件下载区域保存 Geek Uninstaller 安装包。');
+                btn.innerHTML = originalText;
+                btn.style.backgroundColor = '';
+            }, 1000);
+        }
+    </script>
+</body>
+                      </html>
