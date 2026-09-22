@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="辅助网 - 专业工具辅助平台，提供各类在线辅助工具、实用脚本及资源下载，帮助用户提升工作效率，解决技术难题。">
+    <meta name="keywords" content="辅助网,在线工具,辅助脚本,资源下载,效率提升">
+    <title>辅助网 - 专业在线辅助工具与资源平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            padding-right: 50px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            padding: 0 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Tool Grid */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .tool-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .tool-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tool-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: #f1f5f9;
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .tool-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.2s;
+        }
+
+        .tool-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--card-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-text {
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            padding-top: 15px;
+            border-top-color: var(--border-color);
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-icon {
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified mobile nav for this demo */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stats-grid {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                <span>辅助网</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#tools">在线工具</a>
+                <a href="#categories">分类浏览</a>
+                <a href="#features">服务优势</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#tools" class="btn-cta">立即使用</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>让工作更高效，让生活更轻松<br><span>辅助网</span> 在线工具库</h1>
+                <p>汇集实用脚本、数据转换、格式处理及效率工具，无需安装，直接在浏览器中运行，助力您解决日常繁琐任务。</p>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索您需要的辅助工具，例如：JSON格式化、图片压缩...">
+                    <button type="button">搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-bar">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">专业在线工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10万+</div>
+                    <div class="stat-label">每日服务请求</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">免费无广告</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">稳定在线运行</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">精选工具推荐</h2>
+                    <p class="section-desc">分类清晰，功能强大，满足您在不同场景下的辅助需求</p>
+                </div>
+
+                <div class="category-filter">
+                    <button class="filter-btn active">全部</button>
+                    <button class="filter-btn">开发辅助</button>
+                    <button class="filter-btn">图片处理</button>
+                    <button class="filter-btn">文本处理</button>
+                    <button class="filter-btn">效率工具</button>
+                </div>
+
+                <div class="tools-grid">
+                    <!-- Tool 1 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">⚡</div>
+                        <h3 class="tool-title">JSON格式化</h3>
+                        <p class="tool-desc">在线JSON数据格式化、校验与压缩工具，支持语法高亮显示，方便开发者调试接口数据。</p>
+                        <div class="tool-tags">
+                            <span class="tag">开发</span>
+                            <span class="tag">数据</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+
+                    <!-- Tool 2 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">🖼️</div>
+                        <h3 class="tool-title">图片压缩工具</h3>
+                        <p class="tool-desc">支持JPG、PNG、WebP格式图片压缩，调整分辨率与质量，在保持视觉清晰度的同时减小文件体积。</p>
+                        <div class="tool-tags">
+                            <span class="tag">图片</span>
+                            <span class="tag">优化</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+
+                    <!-- Tool 3 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">📝</div>
+                        <h3 class="tool-title">Markdown转HTML</h3>
+                        <p class="tool-desc">实时将Markdown文本转换为HTML代码，支持自定义样式，适用于博客搭建与文档生成。</p>
+                        <div class="tool-tags">
+                            <span class="tag">文本</span>
+                            <span class="tag">编辑</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+
+                    <!-- Tool 4 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">🔢</div>
+                        <h3 class="tool-title">二维码生成器</h3>
+                        <p class="tool-desc">输入网址或文本，快速生成高清二维码，支持自定义颜色与尺寸，便于线下分享。</p>
+                        <div class="tool-tags">
+                            <span class="tag">工具</span>
+                            <span class="tag">实用</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+
+                    <!-- Tool 5 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">🕒</div>
+                        <h3 class="tool-title">时间戳转换</h3>
+                        <p class="tool-desc">Unix时间戳与日期时间格式互转工具，支持毫秒与秒级转换，精准匹配服务器需求。</p>
+                        <div class="tool-tags">
+                            <span class="tag">开发</span>
+                            <span class="tag">时间</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+
+                    <!-- Tool 6 -->
+                    <article class="tool-card">
+                        <div class="tool-icon">📏</div>
+                        <h3 class="tool-title">图片尺寸调整</h3>
+                        <p class="tool-desc">批量上传图片，统一调整长宽尺寸，保持比例或强制裁剪，满足社交媒体发布要求。</p>
+                        <div class="tool-tags">
+                            <span class="tag">图片</span>
+                            <span class="tag">批量</span>
+                        </div>
+                        <a href="#" class="tool-link">立即使用</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">为什么选择辅助网？</h2>
+                    <p class="section-desc">我们致力于提供最稳定、最便捷的在线辅助服务</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🛡️</span>
+                        <h3 class="feature-title">数据安全隐私</h3>
+                        <p class="feature-text">所有文件处理均在浏览器本地完成，不上传至服务器，确保您的敏感数据安全无忧。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚀</span>
+                        <h3 class="feature-title">极速响应速度</h3>
+                        <p class="feature-text">采用高性能前端计算技术，无需等待服务器处理，秒级返回结果，提升工作效率。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <h3 class="feature-title">多端同步支持</h3>
+                        <p class="feature-text">完美适配桌面端与移动端浏览器，随时随地打开即可使用，无需安装任何软件。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题</h2>
+                    <p class="section-desc">关于辅助网工具使用与服务的疑问解答</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            辅助网上的工具是收费的吗？
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            辅助网上的所有工具均提供免费使用，无任何隐藏费用或付费门槛，我们致力于为用户提供纯粹的辅助服务。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            我上传的图片会泄露吗？
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            绝对不会。我们使用纯前端技术处理文件，图片仅在您的浏览器内存中处理，处理完成后立即清除，不会上传到我们的服务器，请放心使用。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            工具支持批量处理吗？
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            是的，部分工具如图片尺寸调整、批量转换等支持批量上传和处理，大大节省您的时间。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            如何反馈工具使用中的问题？
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            您可以通过页面底部的联系方式或提交表单与我们取得联系，我们会及时修复Bug并优化功能。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>辅助网</h3>
+                    <p>专注提供高质量的在线辅助工具，致力于让技术工作更简单，让生活更高效。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#tools">在线工具</a></li>
+                        <li><a href="#categories">分类浏览</a></li>
+                        <li><a href="#features">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">使用指南</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>邮箱：support@fuzhw.com</li>
+                        <li>客服：工作日 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 辅助网 版权所有. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                
+                // Close other items (optional, for accordion effect)
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) child.classList.remove('active');
+                });
+
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Category Filter Logic (Visual Only for Demo)
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+                              </html>
